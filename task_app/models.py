@@ -3,7 +3,7 @@ from django.db import models
 # Create your models here.
 
 class Invoice(models.Model):
-    Date=models.DateField()
+    Date = models.DateField(auto_now_add = True)
     Customer_Name=models.CharField(max_length=200)
 
     def __str__(self):
@@ -17,7 +17,6 @@ class InvoiceDetail(models.Model):
     price=models.DecimalField(max_digits=10, decimal_places=2, blank=True)
 
     
-
     def save(self, *args,  **kwargs):
          self.price=self.quantity * self.unit_price 
          super().save(*args, **kwargs)

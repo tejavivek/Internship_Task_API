@@ -15,16 +15,12 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
-from  task_app import  views
 from rest_framework.urlpatterns import format_suffix_patterns
-
-
-
+from django.urls import *
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('invoices/', views.Invoice_index),
-    path('invoices/<int:id>', views.invoice_detail),
-    
+    path('', include("task_app.urls")),
+
 ]
 urlpatterns = format_suffix_patterns(urlpatterns)
